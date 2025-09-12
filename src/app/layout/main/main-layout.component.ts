@@ -6,6 +6,7 @@ import { Topbar } from "../../shared/component/macro/Topbar/topbar.component";
 @Component({
     selector: 'ed-mainlayout-wrapper',
     templateUrl: 'main-layout.component.html',
+    styleUrl: 'main-layout.component.css',
     imports: [RouterOutlet, Sidebar, Topbar]
 })
 

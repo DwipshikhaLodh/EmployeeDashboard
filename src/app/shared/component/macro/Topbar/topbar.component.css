@@ -1,0 +1,42 @@
+.topbar{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #e7f5f397;
+}
+.topbar-logo-wrapper{
+    width: 15%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 18px;
+}
+.topbar-logo-wrapper p{
+    color: #0f8071;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: cursive;
+}
+.acc-icon{
+    color: #0f8071;
+    font-size: 18px;
+    margin-top: 5px;
+}
+.topbar-header{
+    width: 85%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    padding-right: 20px;
+}
+.topbar-header span{
+    color: #0f8071;
+    font-weight: 600;
+    font-size: 16px;
+}
