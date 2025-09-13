@@ -14,8 +14,15 @@
                     <button>Date of joining</button>
                 </div>
             </div>
-            <button class="addnewemp">Add new Employee</button>
+            <button class="addnewemp" (click)="openFormModal()">Add new Employee</button>
         </div>
     </div>
     <ed-employees-list-wrapper class="employee-list-wrapper"></ed-employees-list-wrapper>
+    @if (isFormModalVisible()){
+        <div class="modal-wrapper" (click)="closeFormModal()">
+            <ed-employee-form-wrapper class="employee-form-wrapper" (click)="$event.stopPropagation()"></ed-employee-form-wrapper>
+        </div>
+    }
+    <!-- <div (click)="closeFormModal()">close</div>
+    <div (click)="openFormModal()">Open</div> -->
 </div>

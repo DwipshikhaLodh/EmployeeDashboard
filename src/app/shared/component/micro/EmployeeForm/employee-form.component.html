@@ -1,0 +1,29 @@
+<div class="employee-form-content">
+    <h2>Add New Employee</h2>
+    <form [formGroup]="addNewEmployee" (submit)="submit()" class="employee-form">
+        <input type="text" placeholder="name..." formControlName="name" class="nameinp"/>
+        @if(name?.invalid && (name?.dirty || name?.touched )){
+            <small>Enter valid Employee name(min 3 characters).</small>
+        }
+        <input type="email" placeholder="email..." formControlName="email" class="emailinp"/>
+        @if(email?.invalid && (email?.dirty || email?.touched)){
+            <small>Enter a valid email id.</small>
+        }
+        <select formControlName="dept" class="deptinp">
+            <option value="">Choose one</option>
+            <option value="HR">HR</option>
+            <option value="Information Technology">Information Technology</option>
+            <option value="Marketing">Marketing</option>
+        </select>
+        @if(dept?.invalid && (dept?.dirty || dept?.touched)){
+            <small>Choose a department.</small>
+        }
+        <input type="date" formControlName="doj" placeholder="date of joining" class="dojinp"/>
+        @if(doj?.invalid && (doj?.dirty || doj?.touched)){
+            <small>Choose a date.</small>
+        }
+    </form>
+    <button (click)="submit()">
+        Submit
+    </button>
+</div>
