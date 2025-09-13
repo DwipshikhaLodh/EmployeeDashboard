@@ -12,10 +12,10 @@
                 <span>{{emp.name}}</span>
                 <span>{{emp.email}}</span>
                 <span>{{emp.dept}}</span>
-                <span>{{emp.DOJ}}</span>
+                <span>{{emp.doj}}</span>
                 <span class="action">
-                    <mat-icon class="icon">edit</mat-icon>
-                    <mat-icon class="icon">delete</mat-icon>
+                    <mat-icon class="icon" (click)="editAddress(emp)">edit</mat-icon>
+                    <mat-icon class="icon" (click)="openDeleteModal(emp)">delete</mat-icon>
                 </span>
             </div>
         }

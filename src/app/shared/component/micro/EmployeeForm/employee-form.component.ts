@@ -1,5 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
+import { EmployeesService } from "../../../../core/services/EmployeeService/employee.service";
 
 @Component({
     selector: 'ed-employee-form-wrapper',
@@ -9,38 +10,49 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angula
 })
 
 export class EmployeeForm implements OnInit{
+    @Output() modalSetter = new EventEmitter<boolean | null>()
+    @Input() formData: any
+    @Input() isEditForm: any
     addNewEmployee!: FormGroup
 
-    constructor(private fb: FormBuilder){
+    constructor(private fb: FormBuilder, private employeesService: EmployeesService){
 
     }
 
     ngOnInit(): void {
         this.addNewEmployee = this.fb.group({
-            name: ['', Validators.required, Validators.minLength(3)],
-            email: ['', Validators.required, Validators.email],
-            dept: ['', Validators.required],
-            doj: ['', Validators.required]
+            name: [ this.formData?.name || '', [Validators.required, Validators.minLength(3)]],
+            email: [ this.formData?.email || '', [Validators.required, Validators.email]],
+            dept: [ this.formData?.dept || '', [Validators.required]],
+            doj: [ this.formData?.doj || '', [Validators.required]]
         })
     }
 
     get name(){
-        return this.addNewEmployee.get('name')
+        return this.addNewEmployee?.get('name')
     }
 
     get email(){
-        return this.addNewEmployee.get('email')
+        return this.addNewEmployee?.get('email')
     }
 
     get dept(){
-        return this.addNewEmployee.get('dept')
+        return this.addNewEmployee?.get('dept')
     }
 
     get doj(){
-        return this.addNewEmployee.get('doj')
+        return this.addNewEmployee?.get('doj')
     }
 
     submit(){
-        console.log(this.addNewEmployee.value)
+        if(this.isEditForm){
+            const edittedEmployee = { ...this.addNewEmployee.value, id: this.formData?.id}
+            this.employeesService.editEmployee(edittedEmployee)
+            this.modalSetter.emit(false)
+        }
+        else{
+            this.employeesService.addEmployee(this.addNewEmployee.value)
+            this.modalSetter.emit(false)
+        }
     }
 }

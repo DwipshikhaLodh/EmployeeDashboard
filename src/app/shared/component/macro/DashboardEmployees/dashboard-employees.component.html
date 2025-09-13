@@ -2,7 +2,7 @@
     <div class="employee-heading">
         <h1>Employees</h1>
         <div class="list-functionality">
-            <input type="text" placeholder="Search"/>
+            <input [(ngModel)]="searchText" type="text" placeholder="Search" (input)="onSearch()"/>
             <div class="filterbox">
                 <mat-icon class="icon">filter_list</mat-icon>
                 <button>dept</button>
@@ -17,12 +17,35 @@
             <button class="addnewemp" (click)="openFormModal()">Add new Employee</button>
         </div>
     </div>
-    <ed-employees-list-wrapper class="employee-list-wrapper"></ed-employees-list-wrapper>
+    <ed-employees-list-wrapper 
+        [employees]="employees"
+        class="employee-list-wrapper"
+        (editModalSetter)="editModalSetter($event)"
+        (employeeSetter)="employeeSetter($event)"
+        (deleteModalOpen)="deleteModalOpen($event)"
+    ></ed-employees-list-wrapper>
     @if (isFormModalVisible()){
         <div class="modal-wrapper" (click)="closeFormModal()">
-            <ed-employee-form-wrapper class="employee-form-wrapper" (click)="$event.stopPropagation()"></ed-employee-form-wrapper>
+            <ed-employee-form-wrapper 
+                class="employee-form-wrapper" 
+                (click)="$event.stopPropagation()" 
+                (modalSetter)="modalSetter($event)"
+                [formData]="formData()"
+                [isEditForm]="isEditForm()"
+            ></ed-employee-form-wrapper>
         </div>
     }
-    <!-- <div (click)="closeFormModal()">close</div>
-    <div (click)="openFormModal()">Open</div> -->
+    @if(isDeleteModalVisible()){
+        <div 
+            class="delete-modal-backdrop"
+            (click)="closeDeleteModal()"
+        >
+            <ed-delete-modal 
+                class="delete-modal"
+                [removedData]="removedData()"
+                (deleteModalSetter)="deleteModalSetter($event)"
+                (click)="$event.stopPropagation()"
+            ></ed-delete-modal>
+        </div>
+    }
 </div>

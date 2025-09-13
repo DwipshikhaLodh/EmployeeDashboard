@@ -1,6 +1,6 @@
 <div class="employee-form-content">
     <h2>Add New Employee</h2>
-    <form [formGroup]="addNewEmployee" (submit)="submit()" class="employee-form">
+    <form [formGroup]="addNewEmployee" (ngSubmit)="submit()" class="employee-form">
         <input type="text" placeholder="name..." formControlName="name" class="nameinp"/>
         @if(name?.invalid && (name?.dirty || name?.touched )){
             <small>Enter valid Employee name(min 3 characters).</small>
@@ -22,8 +22,15 @@
         @if(doj?.invalid && (doj?.dirty || doj?.touched)){
             <small>Choose a date.</small>
         }
+        @if(isEditForm){
+            <button type="submit">
+                Save Changes
+            </button>
+        }
+        @if(!isEditForm){
+            <button type="submit">
+                Submit
+            </button>
+        }
     </form>
-    <button (click)="submit()">
-        Submit
-    </button>
 </div>

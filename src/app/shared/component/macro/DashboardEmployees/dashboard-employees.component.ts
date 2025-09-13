@@ -1,17 +1,40 @@
-import { Component, signal } from "@angular/core";
+import { Component, OnInit, signal } from "@angular/core";
 import { MatIconModule } from "@angular/material/icon";
 import { EmployeesList } from "../EmployeesList/employees-list.component";
 import { EmployeeForm } from "../../micro/EmployeeForm/employee-form.component";
+import { EmployeesService } from "../../../../core/services/EmployeeService/employee.service";
+import { DeleteModal } from "../../micro/DeleteModal/delete-modal.component";
+import { FormsModule } from "@angular/forms";
 
 @Component({
     selector: 'ed-dashboard-employees-wrapper',
     templateUrl: 'dashboard-employees.component.html',
     styleUrl: 'dashboard-employees.component.css',
-    imports: [MatIconModule, EmployeesList, EmployeeForm]
+    imports: [MatIconModule, EmployeesList, EmployeeForm, DeleteModal, FormsModule]
 })
 
-export class DashboardEmployees{
+export class DashboardEmployees implements OnInit{
     isFormModalVisible = signal(false)
+    isDeleteModalVisible = signal(false)
+    removedData = signal({}) // to be removed employee
+    formData = signal({}) // to be editted employee
+    isEditForm = signal(false)
+    employees = signal(null)
+    searchText = signal('')
+
+    constructor(private employeesService: EmployeesService){}
+
+    ngOnInit(): void {
+        this.employeesService.loadEmployees()
+        this.employeesService.employees.subscribe({
+            next: (data) => {
+                this.employees.set(data)
+            },
+            error: (err) => {
+                console.log(err.message);
+            }
+        })
+    }
 
     openFormModal(){
         this.isFormModalVisible.set(true)
@@ -20,5 +43,32 @@ export class DashboardEmployees{
     }
     closeFormModal(){
         this.isFormModalVisible.set(false)
+        this.formData.set({})
+        this.isEditForm.set(false)
+    }
+    modalSetter(value: any){
+        this.isFormModalVisible.set(value)
+    }
+    editModalSetter(value: any){
+        this.isFormModalVisible.set(value)
+    }
+    employeeSetter(emp: any){
+        this.formData.set(emp)
+        this.isEditForm.set(true)
+    }
+    deleteModalSetter(value:any){
+        this.isDeleteModalVisible.set(value)
+    }
+    closeDeleteModal(){
+        this.isDeleteModalVisible.set(false)
+    }
+    deleteModalOpen(emp: any){
+        this.isDeleteModalVisible.set(true)
+        this.removedData.set(emp)
+    }
+
+    onSearch(){
+        console.log(this.searchText());
+        
     }
 }
