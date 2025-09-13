@@ -1,0 +1,23 @@
+<div class="employees-list-content">
+    <div class="employees-list-heading">
+        <span>Name</span>
+        <span>Email Id</span>
+        <span>Department</span>
+        <span>Date of Joining</span>
+        <span class="action-heading">Actions</span>
+    </div>
+    <div class="employees-list-body">
+        @for(emp of employees(); track emp.id){
+            <div>
+                <span>{{emp.name}}</span>
+                <span>{{emp.email}}</span>
+                <span>{{emp.dept}}</span>
+                <span>{{emp.DOJ}}</span>
+                <span class="action">
+                    <mat-icon class="icon">edit</mat-icon>
+                    <mat-icon class="icon">delete</mat-icon>
+                </span>
+            </div>
+        }
+    </div>
+</div>

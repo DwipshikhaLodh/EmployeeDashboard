@@ -1,0 +1,48 @@
+.employees-list-content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.employees-list-heading{
+    width: 96.5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    padding: 10px;
+    /* margin-left: 15px; */
+}
+.employees-list-heading span{
+    width: 22%;
+    font-size: 17px;
+    color: #0f8071;
+}
+.employees-list-body{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 450px;
+}
+.employees-list-body div{
+    width: 98%;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    padding: 10px;
+    background-color: #e7f3f1;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+.employees-list-body div span{
+    width: 20%;
+}
+.action-heading, .action{
+    text-align: center;
+}
+.icon{
+    color: #0f8071;
+    font-size: 16px;
+    cursor: pointer;
+}
