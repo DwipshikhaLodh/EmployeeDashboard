@@ -2,7 +2,7 @@
     <div class="employee-heading">
         <h1>Employees</h1>
         <div class="list-functionality">
-            <input [(ngModel)]="searchText" type="text" placeholder="Search" (input)="onSearch()"/>
+            <input class="search-box" [(ngModel)]="searchText" type="text" placeholder="Search" (input)="onSearch()"/>
             <div class="filterbox">
                 <mat-icon class="icon filter-icon">filter_list</mat-icon>
                 <ul class="filter-list">
@@ -32,6 +32,9 @@
                 </ul>
             </div>
             <button class="addnewemp" (click)="openFormModal()">Add new Employee</button>
+        </div>
+        <div class="download-wrapper">
+            <button (click)="exportToCSV()">Export as CSV <mat-icon class="download-icon">file_download</mat-icon></button>
         </div>
     </div>
     <ed-employees-list-wrapper 

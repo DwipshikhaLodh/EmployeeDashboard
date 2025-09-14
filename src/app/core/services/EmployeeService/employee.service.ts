@@ -81,4 +81,36 @@ export class EmployeesService{
 
         return employees;
     }
+
+    exportToCSV(): number{
+        const employees = this.getEmployees()
+
+        if(employees.length == 0){
+            return -1
+        }
+
+        const headers = Object.keys(employees[0]);
+        const csvRows = []
+
+        csvRows.push(headers.join(',')) // adding objects' keys in first row
+
+        for(let emp of employees){
+            const values = headers.map((header: any) => `"${emp[header] ?? ""}"`)
+            csvRows.push(values.join(','))
+        }
+
+        const csvContent= csvRows.join('\n')
+
+        const blob = new Blob([ csvContent ], { type: "text/csv;charset=utf-8;" })
+        const url = window.URL.createObjectURL(blob)
+
+        const a = document.createElement('a')
+        a.href = url
+        a.download = 'employees.csv'
+        a.click()
+
+        window.URL.revokeObjectURL(url);
+        
+        return 0
+    }
 }

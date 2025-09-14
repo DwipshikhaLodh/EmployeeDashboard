@@ -21,6 +21,7 @@ export class DashboardEmployees implements OnInit{
     isEditForm = signal(false)
     employees = signal(null)
     searchText = signal('')
+    exportMsg = signal('')
 
     constructor(private employeesService: EmployeesService){}
 
@@ -48,6 +49,8 @@ export class DashboardEmployees implements OnInit{
     }
     modalSetter(value: any){
         this.isFormModalVisible.set(value)
+        this.formData.set({})
+        this.isEditForm.set(false)
     }
     editModalSetter(value: any){
         this.isFormModalVisible.set(value)
@@ -80,5 +83,12 @@ export class DashboardEmployees implements OnInit{
     sort(value: string){
         const sortResult = this.employeesService.sortEmployees(value)
         this.employees.set(sortResult)
+    }
+
+    exportToCSV(){
+        const flag = this.employeesService.exportToCSV()
+        if(flag == -1){
+            this.exportMsg.set('Employee list is empty.')
+        }
     }
 }

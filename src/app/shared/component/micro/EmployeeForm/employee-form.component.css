@@ -41,4 +41,29 @@ button{
 button:hover{
     font-size: 18px;
 }
-
+.close{
+    background-color: white;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    color: #0f8071;
+    top: -90px;
+    right: 20px;
+    cursor: pointer;
+}
+@media (min-width: 350px) and (max-width: 600px){
+    .close{
+        display: flex;
+    }
+    .employee-form-content h2{
+        margin-top: 30px;
+    }
+    .deptinp option{
+        width: 300px;
+        white-space: nowrap;
+        overflow: hidden;
+        font-size: 10px;
+    }
+}

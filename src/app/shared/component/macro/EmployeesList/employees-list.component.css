@@ -46,3 +46,22 @@
     font-size: 16px;
     cursor: pointer;
 }
+
+@media (min-width: 350px) and (max-width: 600px){
+    .employees-list-content{
+        margin-top: 25px;
+    }
+    .employees-list-heading span{
+        font-size: 13px;
+    }
+    .employees-list-heading{
+        align-items: start;
+        width: 100%;
+    }
+    .employees-list-body div span{
+        font-size: 12px;
+    }
+    .employees-list-body div{
+        align-items: start;
+    }
+}

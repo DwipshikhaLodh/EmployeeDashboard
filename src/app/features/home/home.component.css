@@ -8,3 +8,8 @@
     width: 85%;
     height: 100%;
 }
+@media (min-width: 350px) and (max-width: 600px){
+    :host{
+        width: 100%;
+    }
+}

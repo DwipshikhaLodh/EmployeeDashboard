@@ -1,18 +1,20 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { EmployeesService } from "../../../../core/services/EmployeeService/employee.service";
+import { MatIconModule } from "@angular/material/icon";
 
 @Component({
     selector: 'ed-employee-form-wrapper',
     templateUrl: 'employee-form.component.html',
     styleUrl: 'employee-form.component.css',
-    imports: [ReactiveFormsModule]
+    imports: [ReactiveFormsModule, MatIconModule]
 })
 
 export class EmployeeForm implements OnInit{
     @Output() modalSetter = new EventEmitter<boolean | null>()
     @Input() formData: any
     @Input() isEditForm: any
+    today: string = new Date().toISOString().split('T')[0];
     addNewEmployee!: FormGroup
 
     constructor(private fb: FormBuilder, private employeesService: EmployeesService){
@@ -54,5 +56,9 @@ export class EmployeeForm implements OnInit{
             this.employeesService.addEmployee(this.addNewEmployee.value)
             this.modalSetter.emit(false)
         }
+    }
+
+    closeForm(){
+        this.modalSetter.emit(false)
     }
 }

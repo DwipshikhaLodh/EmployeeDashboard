@@ -13,7 +13,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-left: 18px;
+    margin-left: 12px;
 }
 .topbar-logo-wrapper p{
     color: #0f8071;
@@ -39,4 +39,18 @@
     color: #0f8071;
     font-weight: 600;
     font-size: 16px;
+}
+
+@media (min-width: 350px) and (max-width: 600px){
+    .topbar-logo-wrapper{
+        width: 50%;
+    }
+    .acc-icon{
+        font-size: 13px;
+        margin-top: 12px;
+        margin-right: -10px;
+    }
+    .topbar-header span{
+        font-size: 13px;
+    }
 }

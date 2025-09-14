@@ -26,6 +26,12 @@
     font-size: 15px;
     margin-right: 4px;
 }
+.search-box{
+    font-size: 16px;
+    border-radius: 8px;
+    border: 2px solid #0f8071;
+    outline-color: #0f8071;
+}
 .filterbox, .sortbox{
     display: flex;
     flex-direction: column;
@@ -34,12 +40,13 @@
     height: 70px;
     margin-left: 8px;
     margin-right: 8px;
+    cursor: pointer;
 }
 .filterbox ul, .sortbox ul{
     position: absolute;
     left: 0;
     background-color: white;
-    margin-top: 40px;
+    margin-top: 30px;
     padding: 9px;
     box-shadow: 2px 2px 13px 4px #d8dfdf94;
     border-radius: 5px;
@@ -59,6 +66,31 @@
 }
 .filterbox:hover .filter-list, .sortbox:hover .sort-list{
     display: block;
+}
+.download-wrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    margin-top: -10px;
+}
+.download-wrapper button{
+    border: 2px solid #0f8071;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    padding-left: 6px;
+    padding-right: 2px;
+    border-radius: 8px;
+    color: #0f8071;
+    cursor: pointer;
+}
+.download-icon{
+    font-size: 16px;
+    color: #0f8071;
+    margin-top: 8px;
 }
 .addnewemp{
     border: none;
@@ -117,4 +149,24 @@
     padding: 8px;
     background-color: white;
     box-shadow: 2px 2px 13px 4px #d8dfdf;
+}
+
+@media (min-width: 350px) and (max-width: 600px){
+    .employee-heading h1{
+        font-size: medium;
+    }
+    .addnewemp{
+        font-size: 13px;
+        padding: 4px;
+    }
+    .download-wrapper button{
+        font-size: 13px;
+        margin-top: -16px;
+    }
+    .employee-content{
+        padding-right: 10px;
+    }
+    .employee-form-wrapper{
+        width: 100%;
+    }
 }
