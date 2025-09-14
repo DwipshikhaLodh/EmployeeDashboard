@@ -6,6 +6,15 @@
     align-items: center;
     background-color: #e7f5f397;
 }
+.dark{
+    background-color: #0f8071;
+}
+.dark div p, .dark div span{
+    color: white;
+}
+.darkIcon{
+    color: white !important;
+}
 .topbar-logo-wrapper{
     width: 15%;
     height: 100%;
@@ -24,6 +33,10 @@
 .acc-icon{
     color: #0f8071;
     font-size: 18px;
+    margin-top: 5px;
+}
+.toggle-icon{
+    margin-left: 20px;
     margin-top: 5px;
 }
 .topbar-header{

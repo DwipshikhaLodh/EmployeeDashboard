@@ -11,7 +11,7 @@
 }
 
 .mainbody-wrapper{
-    height: calc(100vh - 100px);
+    height: calc(100vh - 54px);
     display: flex;
     flex-direction: row;
     align-items: start;

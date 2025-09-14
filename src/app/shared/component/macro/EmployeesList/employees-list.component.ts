@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, signal } from "@angular/core";
 import { MatIconModule } from "@angular/material/icon";
-import { EmployeesService } from "../../../../core/services/EmployeeService/employee.service";
 
 @Component({
     selector: 'ed-employees-list-wrapper',
@@ -9,16 +8,11 @@ import { EmployeesService } from "../../../../core/services/EmployeeService/empl
     imports: [MatIconModule]
 })
 
-export class EmployeesList implements OnInit{
+export class EmployeesList{
     @Output() editModalSetter = new EventEmitter<boolean | null>()
     @Output() employeeSetter = new EventEmitter<any>()
     @Output() deleteModalOpen = new EventEmitter<boolean | null>()
     @Input() employees: any
-
-    ngOnInit(): void {
-        console.log(this.employees());
-        
-    }
 
     editAddress(emp: any){
         this.editModalSetter.emit(true)

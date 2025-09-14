@@ -1,6 +1,7 @@
 import { Component, signal } from "@angular/core";
 import { MatIconModule } from '@angular/material/icon';
 import { Router, RouterLink, RouterLinkActive } from "@angular/router";
+import { ThemeService } from "../../../../core/services/ThemeService/theme.service";
 
 @Component({
     selector: 'ed-sidebar-wrapper',
@@ -11,7 +12,8 @@ import { Router, RouterLink, RouterLinkActive } from "@angular/router";
 
 export class Sidebar{
     route = signal('')
-    constructor(private router: Router){
+    
+    constructor(private router: Router, public themeService: ThemeService){
         this.route.set(router.url)
     }
 

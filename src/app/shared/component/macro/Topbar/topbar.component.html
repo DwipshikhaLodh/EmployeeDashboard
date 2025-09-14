@@ -1,9 +1,17 @@
-<div class="topbar">
+<div class="topbar" [class.dark]="themeService.darkMode()">
     <div class="topbar-logo-wrapper">
         <p>EmployeeDash</p>
     </div>
     <div class="topbar-header">
-        <mat-icon class="acc-icon">account_circle</mat-icon>
+        <mat-icon class="acc-icon" [class.darkIcon]="themeService.darkMode()">account_circle</mat-icon>
         <span>Admin</span>
+        <span>
+            @if(themeService.darkMode()){
+                <mat-icon (click)="toggleMode()" class="toggle-icon">toggle_on</mat-icon>
+            }
+            @if(!themeService.darkMode()){
+                <mat-icon (click)="toggleMode()" class="toggle-icon">toggle_off</mat-icon>
+            }
+        </span>
     </div>
 </div>

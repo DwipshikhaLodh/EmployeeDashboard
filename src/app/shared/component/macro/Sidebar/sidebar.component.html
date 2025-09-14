@@ -1,4 +1,4 @@
-<div class="sidebar-content-wrapper">
+<div class="sidebar-content-wrapper" [class.dark]="themeService.darkMode()">
     <ul class="sidebar-content">
         <li class="nav-li">
             <button routerLink="/dashboard" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" (click)="gotohome()"><mat-icon class="dashboard-icon">dashboard</mat-icon>Dashboard</button>
@@ -7,7 +7,4 @@
             <button routerLink="/dashboard/employees" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" (click)="gotoemployees()"><mat-icon class="emp-icon">group</mat-icon>Employees</button>
         </li>
     </ul>
-    <div class="sidebar-setting">
-        <button>Logout</button>
-    </div>
 </div>
