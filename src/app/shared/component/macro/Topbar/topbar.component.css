@@ -38,6 +38,7 @@
 .toggle-icon{
     margin-left: 20px;
     margin-top: 5px;
+    cursor: pointer;
 }
 .topbar-header{
     width: 85%;
