@@ -48,4 +48,37 @@ export class EmployeesService{
         const updatedEmployees = employees.filter((e: any) => e.id !== emp.id)
         this.saveEmployees(updatedEmployees)
     }
+
+    searchEmployee(input: any): any{
+        const employees = this.getEmployees()
+        if(!input){
+            return employees
+        }
+        const inputLowerCase = input.toLowerCase()
+        
+        return employees.filter((emp: any) => emp.name.toLowerCase().includes(inputLowerCase) || emp.email.toLowerCase().includes(inputLowerCase))
+    }
+
+    filterEmployee(input: any): any{
+        const employees = this.getEmployees()
+        const inputLowerCase = input.toLowerCase()
+
+        return employees.filter((emp: any) => emp.dept.toLowerCase() == inputLowerCase)
+    }
+
+    sortEmployees(input: string): any{
+        const employees = this.getEmployees()
+
+        if(input == 'name'){
+            employees.sort((a: any,b: any) => a.name.localeCompare(b.name))
+        }
+        if(input == 'doj-o'){
+            employees.sort((a: any,b: any) => new Date(a.doj).getTime() - new Date(b.doj).getTime())
+        }
+        if(input == 'doj-l'){
+            employees.sort((a: any,b: any) => new Date(b.doj).getTime() - new Date(a.doj).getTime())
+        }
+
+        return employees;
+    }
 }

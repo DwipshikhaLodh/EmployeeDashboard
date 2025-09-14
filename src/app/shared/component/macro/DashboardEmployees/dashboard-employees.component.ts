@@ -68,7 +68,17 @@ export class DashboardEmployees implements OnInit{
     }
 
     onSearch(){
-        console.log(this.searchText());
-        
+        const searchResult = this.employeesService.searchEmployee(this.searchText())
+        this.employees.set(searchResult)
+    }
+
+    filter(value: string){
+        const filterResult = this.employeesService.filterEmployee(value)
+        this.employees.set(filterResult)
+    }
+
+    sort(value: string){
+        const sortResult = this.employeesService.sortEmployees(value)
+        this.employees.set(sortResult)
     }
 }

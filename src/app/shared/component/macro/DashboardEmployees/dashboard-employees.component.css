@@ -26,23 +26,39 @@
     font-size: 15px;
     margin-right: 4px;
 }
-.filterbox{
+.filterbox, .sortbox{
     display: flex;
     flex-direction: column;
     margin-right: 4px;
+    position: relative;
+    height: 70px;
+    margin-left: 8px;
+    margin-right: 8px;
 }
-.filterbox button{
-    margin-top: 8px;
+.filterbox ul, .sortbox ul{
+    position: absolute;
+    left: 0;
+    background-color: white;
+    margin-top: 40px;
+    padding: 9px;
+    box-shadow: 2px 2px 13px 4px #d8dfdf94;
+    border-radius: 5px;
+    width: 180px;
+    display: none;
 }
-.sortbox{
-    display: flex;
-    flex-direction: column;
-    margin-right: 4px;
+.filterbox ul li, .sortbox ul li{
+    list-style: none;
+    margin-top: 4px;
+    margin-bottom: 4px;
 }
-.sortbox div{
-    display: flex;
-    flex-direction: column;
-    margin-top: 8px;
+.filterbox ul li button, .sortbox ul li button{
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+.filterbox:hover .filter-list, .sortbox:hover .sort-list{
+    display: block;
 }
 .addnewemp{
     border: none;

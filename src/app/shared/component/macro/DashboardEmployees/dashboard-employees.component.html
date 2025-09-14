@@ -4,15 +4,32 @@
         <div class="list-functionality">
             <input [(ngModel)]="searchText" type="text" placeholder="Search" (input)="onSearch()"/>
             <div class="filterbox">
-                <mat-icon class="icon">filter_list</mat-icon>
-                <button>dept</button>
+                <mat-icon class="icon filter-icon">filter_list</mat-icon>
+                <ul class="filter-list">
+                    <li><button (click)="filter('marketing')">
+                        Marketing
+                    </button></li>
+                    <li><button (click)="filter('HR')">
+                        HR
+                    </button></li>
+                    <li><button (click)="filter('information technology')">
+                        Information Technology
+                    </button></li>
+                </ul>
             </div>
             <div class="sortbox">
                 <mat-icon class="icon">sort</mat-icon>
-                <div>
-                    <button>Sort by Name</button>
-                    <button>Date of joining</button>
-                </div>
+                <ul class="sort-list">
+                    <li><button (click)="sort('name')">
+                        By Name
+                    </button></li>
+                    <li><button (click)="sort('doj-o')">
+                        By DOJ (oldest)
+                    </button></li>
+                    <li><button (click)="sort('doj-l')">
+                        By DOJ (latest)
+                    </button></li>
+                </ul>
             </div>
             <button class="addnewemp" (click)="openFormModal()">Add new Employee</button>
         </div>
