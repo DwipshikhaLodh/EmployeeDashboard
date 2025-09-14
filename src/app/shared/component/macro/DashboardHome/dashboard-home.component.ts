@@ -18,6 +18,14 @@ export class DashboardHome implements OnInit{
     constructor(private employeeService: EmployeesService){}
 
     ngOnInit(): void {
-        
+        this.employeeService.loadEmployees()
+        this.employeeService.employees.subscribe({
+            next: (data) => {
+                this.employeesCount.set(data.length)
+            },
+            error: (err) => {
+                console.log(err.message);
+            }
+        })
     }
 }
