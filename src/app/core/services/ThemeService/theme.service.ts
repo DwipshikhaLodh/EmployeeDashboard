@@ -9,7 +9,5 @@ export class ThemeService{
 
     toggleMode(){
         this.darkMode.update((prev) => !prev)
-        console.log(this.darkMode());
-        
     }
 }
