@@ -72,10 +72,10 @@ export class EmployeesService{
         if(input == 'name'){
             employees.sort((a: any,b: any) => a.name.localeCompare(b.name))
         }
-        if(input == 'doj-o'){
+        if(input == 'doj-l'){
             employees.sort((a: any,b: any) => new Date(a.doj).getTime() - new Date(b.doj).getTime())
         }
-        if(input == 'doj-l'){
+        if(input == 'doj-o'){
             employees.sort((a: any,b: any) => new Date(b.doj).getTime() - new Date(a.doj).getTime())
         }
 
